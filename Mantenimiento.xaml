@@ -1,0 +1,66 @@
+﻿<Window x:Class="Semana2B.Mantenimiento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Semana2B"
+        mc:Ignorable="d"
+        Title="Mantenimiento" Height="450" Width="800">
+    <Grid Margin="20">
+        <TabControl>
+            <!-- Pestaña de Mantenimiento de Camiones -->
+            <TabItem Header="Mantenimiento de Camiones">
+                <Grid Margin="10">
+                    <!-- Encabezado -->
+                    <TextBlock Text="Registro de Camiones" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" VerticalAlignment="Top"/>
+
+                    <!-- Formulario -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Columna izquierda: Etiquetas -->
+                        <StackPanel Grid.Column="0" Margin="0,5" VerticalAlignment="Center">
+                            <TextBlock Text="Peso Máximo:"/>
+                            <TextBlock Text="Placa:" Margin="0,10,0,0"/>
+                            <TextBlock Text="Peso Vacío:" Margin="0,10,0,0"/>
+                        </StackPanel>
+
+                        <!-- Columna derecha: Campos de entrada -->
+                        <StackPanel Grid.Column="1" Margin="0,5" VerticalAlignment="Center">
+                            <TextBox x:Name="PesoMaximoTextBox"/>
+                            <TextBox x:Name="PlacaTextBox" Margin="0,10,0,0"/>
+                            <TextBox x:Name="PesoVacioTextBox" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Botón de Guardar para Mantenimiento de Camiones -->
+                    <Button Content="Guardar" Width="100" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+
+            <!-- Pestaña de Lista de Conductores -->
+            <TabItem Header="Lista de Conductores">
+                <Grid Margin="10">
+                    <!-- Encabezado -->
+                    <TextBlock Text="Lista de Conductores" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" VerticalAlignment="Top"/>
+
+                    <!-- DataGrid de Conductores -->
+                    <DataGrid ItemsSource="{Binding Conductores}" AutoGenerateColumns="False" Margin="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"/>
+                            <DataGridTextColumn Header="Licencia" Binding="{Binding Licencia}"/>
+                            <DataGridTextColumn Header="Fecha de Expedición" Binding="{Binding FechaExpedicion}"/>
+                            <!-- Agrega más columnas según sea necesario -->
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Botón de Volver -->
+        <Button Content="Volver" Width="100" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click"/>
+    </Grid>
+</Window>
